@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .banner {
+            position: relative;
+            height: 70vh;
+            min-height: 400px;
+            max-height: 650px;
+            overflow: hidden;
+            font-family: "Open Sans";
+        }
+
+        .banner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .content {
+            position: absolute;
+            align-items: center;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            width: 90%;
+        }
+
+        .content h1 {
+            align-items: center;
+            font-size: 35px;
+            color: rgb(240, 202, 221);
+            letter-spacing: 2px;
+            word-spacing: 8px;
+            letter-spacing: 12px;
+        }
+
+        .content p {
+            align-items: center;
+            font-size: 20px;
+            color: rgb(240, 218, 193);
+            margin: 10px 0 24px;
+            letter-spacing: 1px;
+            word-spacing: 6px;
+            letter-spacing: 8px;
+        }
+
+        .shop-btn {
+            align-items: center;
+            display: inline-block;
+            background: rgb(114, 172, 226);
+            color: white;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 0;
+            transition: transform 0.5s ease, outline-color 0.5s ease;
+        }
+
+        .shop-btn:hover {
+            align-items: center;
+            outline: 4px solid rgb(114, 172, 226);
+            outline-offset: 5px;
+            transform: scale(1.08);
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="banner">
+
+        <img src="/bottom2.jpg" alt="Banner">
+
+        <div class="content">
+            <h1>The Biggest Sale</h1>
+            <p>Special for Today</p>
+            <a href="#" class="shop-btn">Shop Now</a>
+        </div>
+
+    </div>
+
+</body>
+
+</html>
