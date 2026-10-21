@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <style>
+        .error {
+            color: red;
+            margin-left: 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <form id="registrationForm" onsubmit="return validation()">
+        <h2>Registration Form</h2>
+        <label for="inputField">Name:</label>
+        <input type="text" id="inputField" placeholder="Enter your name">
+        <span id="nameError" class="error"></span><br>
+
+        <label for="ageField">Age:</label>
+        <input type="number" id="ageField" placeholder="Enter your age" min="1">
+        <span id="ageError" class="error"></span><br>
+
+        <label for="addressField">Address:</label>
+        <input type="text" id="addressField" placeholder="Enter your address" maxlength="20">
+        <span id="addressError" class="error"></span><br>
+
+        <label for="phoneField">Phone Number:</label>
+        <input type="text" id="phoneField" placeholder="Enter your phone number" inputmode="numeric">
+        <span id="phoneError" class="error"></span><br>
+
+        <label for="courseField">Course:</label>
+        <input type="text" id="courseField" placeholder="Enter your course">
+        <span id="courseError" class="error"></span><br>
+
+        <label for="emailField">Email:</label>
+        <input type="text" id="emailField" placeholder="Enter your email" inputmode="email">
+        <span id="emailError" class="error"></span><br>
+
+        <label for="passwordField">Password:</label>
+        <input type="password" id="passwordField" placeholder="Enter your password">
+        <span id="passwordError" class="error"></span><br>
+
+        <label for="confirmPasswordField">Confirm Password:</label>
+        <input type="password" id="confirmPasswordField" placeholder="Confirm your password">
+        <span id="confirmPasswordError" class="error"></span><br>
+
+        <button type="submit">Submit</button>
+    </form>
+    
+    <script>
+        let name_tag = document.getElementById("inputField");
+        let age_tag = document.getElementById("ageField");
+        let address_tag = document.getElementById("addressField");
+        let phone_tag = document.getElementById("phoneField");
+        let course_tag = document.getElementById("courseField");
+        let email_tag = document.getElementById("emailField");
+        let password_tag = document.getElementById("passwordField");
+        let confirm_password_tag = document.getElementById("confirmPasswordField");
+        let submit_btn = document.getElementById("submitButton");
+
+        function validation() {
+            let isValid = true;
+
+            function setError(errorId, message) {
+                document.getElementById(errorId).innerHTML = message;
+                isValid = false;
+            }
+
+            function clearError(errorId) {
+                document.getElementById(errorId).innerHTML = "";
+            }
+
+            if (!name_tag.value.trim()) {
+                setError("nameError", "Please enter your name!");
+            } else {
+                clearError("nameError");
+            }
+
+            if (!age_tag.value || Number(age_tag.value) <= 0) {
+                setError("ageError", age_tag.value ? "Age must be a positive number!" : "Please enter your age!");
+            } else {
+                clearError("ageError");
+            }
+
+            if (!address_tag.value.trim()) {
+                setError("addressError", "Please enter your address!");
+            } else if (address_tag.value.length > 20) {
+                setError("addressError", "Address must be 20 characters or less!");
+            } else {
+                clearError("addressError");
+            }
+
+            if (!/^\d{10}$/.test(phone_tag.value)) {
+                setError("phoneError", phone_tag.value ? "Phone number must be exactly 10 digits!" : "Please enter your phone number!");
+            } else {
+                clearError("phoneError");
+            }
+
+            if (!course_tag.value.trim()) {
+                setError("courseError", "Please enter your course!");
+            } else {
+                clearError("courseError");
+            }
+
+            if (!email_tag.value.trim()) {
+                setError("emailError", "Please enter your email!");
+            } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email_tag.value)) {
+                setError("emailError", "Please enter a valid email!");
+            } else {
+                clearError("emailError");
+            }
+
+            if (!password_tag.value) {
+                setError("passwordError", "Please enter your password!");
+            } else {
+                clearError("passwordError");
+            }
+
+            if (!confirm_password_tag.value) {
+                setError("confirmPasswordError", "Please confirm your password!");
+            } else if (password_tag.value !== confirm_password_tag.value) {
+                setError("confirmPasswordError", "Passwords do not match!");
+            } else {
+                clearError("confirmPasswordError");
+            }
+
+            return isValid;
+        }
+
+    </script>
+</body>
+
+</html>
